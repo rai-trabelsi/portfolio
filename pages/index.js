@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div style={{fontFamily: "Arial", padding: "40px", maxWidth: "900px", margin: "auto"}}>
 
-      <h1>Ahmed - Cloud & Infrastructure Engineer</h1>
+      <h1>Rai Trabelsi - Cloud & Infrastructure Engineer</h1>
       <p>
         I design and operate high-availability systems, secure networks,
         and AI-assisted infrastructure for real-world environments.
