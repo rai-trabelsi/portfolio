@@ -10,4 +10,4 @@ Static portfolio website for Rai Trabelsi.
 - `videos/demo.mp4` — project demo video
 
 ## Deployment
-This site can be deployed directly as a static site on Vercel.
+Deploy directly as a static site on Vercel.
