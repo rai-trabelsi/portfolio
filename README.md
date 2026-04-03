@@ -1,20 +1,11 @@
-# Secure Virtualised Micro Data Centre for Odoo SaaS
+# Portfolio
 
-## Overview
-A high-availability infrastructure built using Proxmox, Docker Swarm, pfSense, and CI/CD.
+Cloud & Infrastructure Engineering portfolio.
 
-## Architecture
-(Add your diagram here)
-
-## Features
-- High Availability
-- VLAN Segmentation
-- CI/CD
-- Monitoring
-- Backup
-
-## Demo
-(Add video link)
+## Projects
+- Micro Data Center (HA Infrastructure)
+- AI Ops Assistant
+- Kubernetes / Swarm Cluster
 
 ## Tech Stack
-Proxmox, pfSense, Docker Swarm, HAProxy, PostgreSQL, Redis, Grafana, Prometheus
+Proxmox, pfSense, Docker, HAProxy, PostgreSQL, Redis, Grafana, Prometheus
