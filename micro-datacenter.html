@@ -1,52 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Micro Data Center</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro Data Centre Project | Rai Trabelsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-shell">
+    <header class="project-hero">
+      <a class="back-link" href="index.html">← Back to portfolio</a>
+      <span class="eyebrow">Flagship Infrastructure Project</span>
+      <h1>Secure Virtualised Micro Data Centre for Odoo SaaS</h1>
+      <p class="hero-text">
+        High-availability infrastructure designed with Proxmox, Docker Swarm, pfSense, and CI/CD,
+        with a focus on security, resilience, and service continuity.
+      </p>
 
-<a href="index.html">← Back to Portfolio</a>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/rai-trabelsi/portfolio" target="_blank" rel="noreferrer">View Source Code</a>
+        <a class="btn btn-secondary" href="videos/demo.mp4">Watch Demo</a>
+      </div>
+    </header>
 
-<h1>Secure Virtualised Micro Data Centre for Odoo SaaS</h1>
+    <main>
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Architecture</span>
+          <h2>System overview</h2>
+        </div>
 
-<p>High-availability infrastructure designed using Proxmox, Docker Swarm, pfSense, and CI/CD pipelines.</p>
+        <div class="image-frame">
+          <img src="images/architecture.png" alt="Architecture diagram for the micro data centre project" />
+        </div>
 
-<h2>Architecture Diagram</h2>
-<img src="images/architecture.png" width="800">
+        <div class="overview-grid">
+          <div class="info-card">
+            <h3>Proxmox Cluster</h3>
+            <p>Virtualised infrastructure hosting platform components across multiple nodes.</p>
+          </div>
+          <div class="info-card">
+            <h3>pfSense</h3>
+            <p>Routing, firewalling, and VLAN-based segmentation for secure traffic isolation.</p>
+          </div>
+          <div class="info-card">
+            <h3>Docker Swarm</h3>
+            <p>Container orchestration with replicated services and health-aware scheduling.</p>
+          </div>
+          <div class="info-card">
+            <h3>HAProxy</h3>
+            <p>Load balancing and failover support for continuous application accessibility.</p>
+          </div>
+          <div class="info-card">
+            <h3>PostgreSQL & Redis</h3>
+            <p>Persistent data layer and caching services to support performance and reliability.</p>
+          </div>
+          <div class="info-card">
+            <h3>Prometheus & Grafana</h3>
+            <p>Monitoring stack for infrastructure visibility, metrics collection, and dashboards.</p>
+          </div>
+        </div>
+      </section>
 
-<h2>Architecture Overview</h2>
-<ul>
-  <li><strong>Proxmox Cluster:</strong> Virtualised infrastructure</li>
-  <li><strong>pfSense:</strong> Firewall and VLAN routing</li>
-  <li><strong>Docker Swarm:</strong> Service orchestration</li>
-  <li><strong>HAProxy:</strong> Load balancing and failover</li>
-  <li><strong>PostgreSQL & Redis:</strong> Data and caching</li>
-  <li><strong>Monitoring:</strong> Prometheus & Grafana</li>
-</ul>
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Highlights</span>
+          <h2>Key features</h2>
+        </div>
 
-<h2>Key Features</h2>
-<ul>
-  <li>High Availability with replicated services</li>
-  <li>Network segmentation via VLANs</li>
-  <li>CI/CD with GitLab</li>
-  <li>Monitoring dashboards</li>
-  <li>Backup with NFS</li>
-</ul>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>High Availability</h3>
+            <p>Odoo deployed with replicated services and failover-oriented architecture.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Network Segmentation</h3>
+            <p>VLAN isolation implemented through pfSense for cleaner security boundaries.</p>
+          </div>
+          <div class="feature-card">
+            <h3>CI/CD Workflow</h3>
+            <p>GitLab pipeline covering validation, deployment, and verification stages.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Monitoring</h3>
+            <p>Live metrics and dashboards through Prometheus and Grafana.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Backup Strategy</h3>
+            <p>NFS-backed storage and Proxmox snapshot mechanisms for recovery readiness.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Failure Simulation</h3>
+            <p>Tested service continuity during node interruption and recovery scenarios.</p>
+          </div>
+        </div>
+      </section>
 
-<h2>Demo</h2>
-<a href="#">Watch Demo Video</a>
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Demonstration</span>
+          <h2>What the demo shows</h2>
+        </div>
 
-<h2>Technical Deep Dive</h2>
-<ul>
-  <li>Docker Swarm replication</li>
-  <li>HAProxy routing</li>
-  <li>PostgreSQL & Redis roles</li>
-  <li>VLAN segmentation</li>
-</ul>
+        <div class="demo-panel">
+          <ul class="feature-list">
+            <li>Simulated node failure inside the cluster</li>
+            <li>Automatic service recovery and rescheduling</li>
+            <li>Odoo remaining accessible during disruption</li>
+          </ul>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="videos/demo.mp4">Open Demo Video</a>
+            <a class="btn btn-ghost" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </section>
 
-<h2>Source Code</h2>
-<a href="#">View Source Code</a>
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Technical depth</span>
+          <h2>Implementation focus</h2>
+        </div>
 
+        <div class="overview-grid">
+          <div class="info-card">
+            <h3>Docker Swarm Stack</h3>
+            <p>Replicated services, node roles, and service continuity across the environment.</p>
+          </div>
+          <div class="info-card">
+            <h3>HAProxy Routing</h3>
+            <p>Traffic distribution with backend health logic and availability-aware behaviour.</p>
+          </div>
+          <div class="info-card">
+            <h3>PostgreSQL & Redis Roles</h3>
+            <p>Persistent data handling and caching support for application responsiveness.</p>
+          </div>
+          <div class="info-card">
+            <h3>VLAN Logic</h3>
+            <p>Service separation for management, servers, users, and protected segments.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

@@ -1,11 +1,13 @@
 # Portfolio
 
-Cloud & Infrastructure Engineering portfolio.
+Static portfolio website for Rai Trabelsi.
 
-## Projects
-- Micro Data Center (HA Infrastructure)
-- AI Ops Assistant
-- Kubernetes / Swarm Cluster
+## Files
+- `index.html` — homepage
+- `micro-datacenter.html` — project page
+- `styles.css` — shared styling
+- `images/architecture.png` — project diagram
+- `videos/demo.mp4` — project demo video
 
-## Tech Stack
-Proxmox, pfSense, Docker, HAProxy, PostgreSQL, Redis, Grafana, Prometheus
+## Deployment
+This site can be deployed directly as a static site on Vercel.

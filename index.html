@@ -1,41 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Rai Trabelsi Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rai Trabelsi | Cloud & Infrastructure Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">Rai Trabelsi</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a class="btn btn-small btn-ghost" href="mailto:your.email@example.com">Contact</a>
+        </div>
+      </nav>
 
-<h1>Rai Trabelsi - Cloud & Infrastructure Engineer</h1>
-<p>I design and deploy high-availability infrastructure, secure networks, and scalable systems using modern DevOps technologies.</p>
+      <div class="hero-content">
+        <span class="eyebrow">Cloud · Infrastructure · DevOps</span>
+        <h1>Building resilient infrastructure for real-world environments.</h1>
+        <p class="hero-text">
+          I design and deploy secure networks, high-availability systems, and containerised platforms
+          using Proxmox, pfSense, Docker Swarm, HAProxy, monitoring, and automation workflows.
+        </p>
 
-<hr>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="micro-datacenter.html">Open Micro Data Centre</a>
+        </div>
 
-<h2>🚀 Featured Projects</h2>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <strong>10+</strong>
+            <span>VLANs configured</span>
+          </div>
+          <div class="stat-card">
+            <strong>HA</strong>
+            <span>Failover-focused architecture</span>
+          </div>
+          <div class="stat-card">
+            <strong>CI/CD</strong>
+            <span>Validation to deployment workflow</span>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<h3>
-  <a href="micro-datacenter.html">🏗 Micro Data Center (HA Infrastructure)</a>
-</h3>
-<p>Proxmox cluster, VLAN segmentation, Docker Swarm, HAProxy</p>
+    <main>
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Featured work</span>
+          <h2>Projects that show how I build and operate infrastructure</h2>
+        </div>
 
-<h3>
-  🤖 AI Ops Assistant
-</h3>
-<p>AI system analyzing logs and detecting anomalies</p>
+        <div class="project-grid">
+          <article class="project-card project-card-featured">
+            <div class="project-badge">Flagship Project</div>
+            <h3>Secure Virtualised Micro Data Centre for Odoo SaaS</h3>
+            <p>
+              High-availability infrastructure built with Proxmox, pfSense, Docker Swarm, HAProxy,
+              PostgreSQL, Redis, GitLab CI/CD, Prometheus, and Grafana.
+            </p>
+            <ul class="feature-list">
+              <li>Cluster-based virtualised infrastructure</li>
+              <li>Network segmentation with VLAN isolation</li>
+              <li>Load balancing, failover, and monitoring</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="micro-datacenter.html">View Project</a>
+              <a class="btn btn-ghost" href="https://github.com/rai-trabelsi/portfolio" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </article>
 
-<h3>
-  ☸ Kubernetes / Swarm Cluster
-</h3>
-<p>Multi-node orchestration with high availability</p>
+          <article class="project-card">
+            <div class="project-icon">🤖</div>
+            <h3>AI Ops Assistant</h3>
+            <p>
+              AI-assisted troubleshooting concept for analysing logs, identifying anomalies,
+              and supporting infrastructure diagnostics.
+            </p>
+            <div class="coming-soon">Project page coming soon</div>
+          </article>
 
-<hr>
+          <article class="project-card">
+            <div class="project-icon">☸</div>
+            <h3>Kubernetes / Swarm HA Cluster</h3>
+            <p>
+              Multi-node orchestration work focused on service availability, traffic distribution,
+              and operational resilience.
+            </p>
+            <div class="coming-soon">Project page coming soon</div>
+          </article>
+        </div>
+      </section>
 
-<h2>🧠 Skills</h2>
-<ul>
-  <li><strong>Infrastructure:</strong> Proxmox, Linux, Virtualization</li>
-  <li><strong>Networking:</strong> VLANs, pfSense, Routing</li>
-  <li><strong>DevOps:</strong> Docker, Swarm, CI/CD</li>
-</ul>
+      <section id="skills" class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Core stack</span>
+          <h2>Skills</h2>
+        </div>
 
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3>Infrastructure</h3>
+            <p>Proxmox VE, Linux, virtualisation, high availability, backup and recovery</p>
+          </div>
+          <div class="skill-block">
+            <h3>Networking</h3>
+            <p>VLANs, pfSense, routing, segmentation, switching, firewalling</p>
+          </div>
+          <div class="skill-block">
+            <h3>DevOps</h3>
+            <p>Docker, Docker Swarm, GitLab CI/CD, HAProxy, monitoring, automation</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
