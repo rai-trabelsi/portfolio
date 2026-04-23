@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Ops Assistant | Rai Trabelsi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="project-hero">
+      <a class="back-link" href="index.html">← Back to portfolio</a>
+      <span class="eyebrow">AI Infrastructure Project</span>
+      <h1>AI Ops Assistant for Log Analysis and Incident Diagnostics</h1>
+      <p class="hero-text">
+        Kubernetes-deployed AI Ops assistant designed to analyse logs, identify likely causes,
+        and generate structured remediation guidance for faster troubleshooting.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://github.com/rai-trabelsi/ai-ops-assistant" target="_blank" rel="noreferrer">
+          View Source Code
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section demo-video-section">
+        <div class="section-heading">
+          <span class="section-kicker">Live Demo</span>
+          <h2>AI-assisted troubleshooting workflow</h2>
+        </div>
+
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/oMMUO7-ISmk"
+            title="AI Ops Assistant Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Architecture</span>
+          <h2>System overview</h2>
+        </div>
+
+        <div class="image-frame">
+          <img src="images/ai-ops-architecture.png" alt="Architecture diagram for the AI Ops Assistant project" />
+        </div>
+
+        <div class="overview-grid">
+          <div class="info-card">
+            <h3>Frontend Interface</h3>
+            <p>User-facing dashboard for submitting logs and viewing structured diagnostics.</p>
+          </div>
+          <div class="info-card">
+            <h3>FastAPI Backend</h3>
+            <p>Backend service responsible for request handling, log processing, and model interaction.</p>
+          </div>
+          <div class="info-card">
+            <h3>Kubernetes Deployment</h3>
+            <p>Application services deployed on Kubernetes for orchestration and portability.</p>
+          </div>
+          <div class="info-card">
+            <h3>LLM Integration</h3>
+            <p>Connected to a local language model endpoint for incident reasoning and response generation.</p>
+          </div>
+          <div class="info-card">
+            <h3>NGINX Proxying</h3>
+            <p>Frontend and API routing configured to provide a clean application workflow.</p>
+          </div>
+          <div class="info-card">
+            <h3>Structured Diagnostics</h3>
+            <p>Outputs organised into summary, likely causes, verification commands, and remediation steps.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Highlights</span>
+          <h2>Key features</h2>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3>Log Analysis</h3>
+            <p>Processes infrastructure and application logs to identify patterns and probable issues.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Structured Incident Output</h3>
+            <p>Generates responses in a clear operational format instead of raw model text.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Kubernetes Deployment</h3>
+            <p>Packaged and deployed as containerised services inside a Kubernetes environment.</p>
+          </div>
+          <div class="feature-card">
+            <h3>LLM-powered Reasoning</h3>
+            <p>Uses a local language model to transform raw logs into actionable technical guidance.</p>
+          </div>
+          <div class="feature-card">
+            <h3>API Integration</h3>
+            <p>Frontend communicates with the backend through a clean API flow for diagnosis requests.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Troubleshooting Focus</h3>
+            <p>Built to support faster root cause analysis and operator decision-making.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Demonstration</span>
+          <h2>What the demo shows</h2>
+        </div>
+
+        <div class="demo-panel">
+          <ul class="feature-list">
+            <li>Submitting logs through the assistant interface</li>
+            <li>AI-generated incident summary and probable causes</li>
+            <li>Suggested commands to confirm the issue</li>
+            <li>Recommended remediation and prevention steps</li>
+            <li>Kubernetes-hosted backend responding through the application workflow</li>
+          </ul>
+          <div class="card-actions">
+            <a class="btn btn-ghost" href="index.html">Back to Home</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Technical depth</span>
+          <h2>Implementation focus</h2>
+        </div>
+
+        <div class="overview-grid">
+          <div class="info-card">
+            <h3>FastAPI Service Design</h3>
+            <p>Backend endpoints built to receive log payloads and return structured diagnostic output.</p>
+          </div>
+          <div class="info-card">
+            <h3>Kubernetes Objects</h3>
+            <p>Deployments and services configured to expose the assistant reliably inside the cluster.</p>
+          </div>
+          <div class="info-card">
+            <h3>Prompt Structuring</h3>
+            <p>Prompt design used to enforce consistent output formatting and technical usefulness.</p>
+          </div>
+          <div class="info-card">
+            <h3>Frontend-to-Backend Flow</h3>
+            <p>Integrated request path between interface, proxy, API, and local language model endpoint.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
