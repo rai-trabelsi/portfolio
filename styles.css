@@ -400,3 +400,42 @@ p {
     height: 68px;
   }
 }
+.hero-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.45);
+  width: fit-content;
+}
+
+.hero-profile img,
+.profile-avatar {
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  max-height: 64px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid rgba(37, 99, 235, 0.7);
+}
+
+.profile-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.profile-name {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+}
