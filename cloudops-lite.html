@@ -55,26 +55,55 @@
         </div>
       </section>
 
-      <section class="section demo-video-section">
-        <div class="section-heading">
-          <span class="section-kicker">Live platform</span>
-          <h2>CloudOps dashboard</h2>
-        </div>
+     ```html
+<section class="section demo-video-section">
+  <div class="section-heading">
+    <span class="section-kicker">Live Demo</span>
+    <h2>CloudOps Lite Platform Demonstration</h2>
+  </div>
 
-        <div class="image-frame">
-          <img src="images/cloudops-dashboard.png" alt="CloudOps Lite dashboard running on Hetzner Cloud" />
-        </div>
-      </section>
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube.com/embed/J4jNHOg_WF0"
+      title="CloudOps Lite Platform Demo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
 
-      <section id="architecture" class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Architecture</span>
-          <h2>System overview</h2>
-        </div>
+<section class="section">
+  <div class="section-heading">
+    <span class="section-kicker">Project proof</span>
+    <h2>Deployment screenshots</h2>
+  </div>
 
-        <div class="image-frame">
-          <img src="images/cloudops-architecture.png" alt="Architecture diagram for the CloudOps Lite Platform" />
-        </div>
+  <div class="overview-grid">
+    <div class="info-card">
+      <h3>CloudOps Dashboard</h3>
+      <p>
+        Custom dashboard showing Hetzner k3s status, API health, Prometheus, Grafana,
+        and platform metrics.
+      </p>
+      <div class="image-frame">
+        <img src="images/cloudops-dashboard.png" alt="CloudOps Lite dashboard running on Hetzner Cloud" />
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Architecture Diagram</h3>
+      <p>
+        High-level architecture showing GitOps workflow, Hetzner Cloud VPS,
+        k3s cluster, FastAPI, Prometheus, and Grafana.
+      </p>
+      <div class="image-frame">
+        <img src="images/cloudops-architecture.png" alt="CloudOps Lite Platform architecture diagram" />
+      </div>
+    </div>
+  </div>
+</section>
+```
 
         <div class="overview-grid">
           <div class="info-card">
