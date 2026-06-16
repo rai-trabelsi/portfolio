@@ -352,3 +352,51 @@ p {
   height: 100%;
   border: 0;
 }
+.hero-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35);
+}
+
+.profile-avatar {
+  width: 82px;
+  height: 82px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 3px solid rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.12);
+}
+
+.profile-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #67e8f9;
+}
+
+.profile-name {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+@media (max-width: 640px) {
+  .hero-profile {
+    border-radius: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .profile-avatar {
+    width: 68px;
+    height: 68px;
+  }
+}
