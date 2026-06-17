@@ -4,36 +4,141 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Ops Assistant | Rai Trabelsi</title>
+  <meta name="description" content="Kubernetes-deployed AI diagnostic assistant using FastAPI, NGINX, and a local LLM to analyse infrastructure failures and generate structured root cause analysis. Built by Rai Trabelsi." />
+  <meta property="og:title" content="AI Ops Assistant | Rai Trabelsi" />
+  <meta property="og:description" content="25+ failure scenarios tested. Kubernetes-hosted. Local LLM. Structured incident output: summary, causes, verification commands, remediation." />
+  <meta property="og:url" content="https://raitrabelsi.vercel.app/ai-ops-assistant.html" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1.5rem 0; }
+    .stat-pill {
+      display: flex; flex-direction: column;
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 10px; padding: .75rem 1.25rem;
+      font-family: Inter, sans-serif;
+    }
+    .stat-pill .num { font-size: 1.5rem; font-weight: 800; color: #0f172a; line-height: 1; }
+    .stat-pill .lbl { font-size: .72rem; color: #64748b; margin-top: .2rem; }
+    .tech-tag {
+      display: inline-block;
+      background: #f1f5f9; color: #334155;
+      font-size: .75rem; font-weight: 600;
+      padding: .25rem .65rem; border-radius: 6px;
+      font-family: Inter, sans-serif; margin: .15rem;
+    }
+    .hire-bar {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      z-index: 100; display: flex; gap: .5rem;
+    }
+    .hire-bar a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.1rem; border-radius: 999px;
+      font-size: .82rem; font-weight: 600; font-family: Inter, sans-serif;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    }
+    .hire-bar a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .hire-bar .hire-primary { background: #0f172a; color: #fff; }
+    .hire-bar .hire-ghost { background: #fff; color: #0f172a; border: 1.5px solid #e2e8f0; }
+    .step-list { list-style: none; padding: 0; margin: 0; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: .75rem 0; border-bottom: 1px solid #f1f5f9;
+      font-family: Inter, sans-serif; font-size: .9rem; color: #334155;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      display: flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 26px;
+      background: #0f172a; color: #fff;
+      border-radius: 50%; font-size: .75rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li strong { color: #0f172a; font-weight: 600; }
+
+    /* Output format preview */
+    .output-preview {
+      background: #0f172a;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      color: #94a3b8;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .output-preview .label { color: #38bdf8; font-weight: 700; }
+    .output-preview .value { color: #e2e8f0; }
+    .output-preview .cmd { color: #4ade80; }
+    .output-preview .head { color: #fb7185; font-weight: 700; font-size: .9rem; }
+
+    /* Scenario tags */
+    .scenario-grid {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0;
+    }
+    .scenario-tag {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: #fef3c7; color: #92400e;
+      font-size: .75rem; font-weight: 600;
+      padding: .3rem .75rem; border-radius: 6px;
+      font-family: Inter, sans-serif;
+    }
+  </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="project-hero">
       <a class="back-link" href="index.html">← Back to portfolio</a>
-      <span class="eyebrow">AI Infrastructure Project</span>
-      <h1>AI Ops Assistant for Log Analysis and Incident Diagnostics</h1>
+      <span class="eyebrow">AI · Infrastructure · Kubernetes · LLM</span>
+      <h1>AI Ops Assistant — Infrastructure Incident Diagnostics</h1>
       <p class="hero-text">
-        Kubernetes-deployed AI Ops assistant designed to analyse logs, identify likely causes,
-        and generate structured remediation guidance for faster troubleshooting.
+        A Kubernetes-deployed AI assistant that analyses infrastructure failure scenarios and returns
+        structured root cause analysis — summary, probable causes, verification commands, and
+        remediation steps. Built with FastAPI, NGINX, and a locally hosted LLM via LM Studio.
+        Tested against 25+ real-world failure patterns.
       </p>
 
-      <div class="hero-actions">
+      <div class="stat-row">
+        <div class="stat-pill"><span class="num">25+</span><span class="lbl">Failure scenarios tested</span></div>
+        <div class="stat-pill"><span class="num">4</span><span class="lbl">Output sections per diagnosis</span></div>
+        <div class="stat-pill"><span class="num">100%</span><span class="lbl">Local — no external API</span></div>
+        <div class="stat-pill"><span class="num">k8s</span><span class="lbl">Fully containerised deployment</span></div>
+      </div>
+
+      <div style="margin-top: .5rem;">
+        <span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">Kubernetes (kind)</span>
+        <span class="tech-tag">NGINX</span>
+        <span class="tech-tag">LM Studio</span>
+        <span class="tech-tag">Local LLM</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">REST API</span>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 1.5rem;">
         <a class="btn btn-primary" href="https://github.com/rai-trabelsi/ai-ops-assistant" target="_blank" rel="noreferrer">
           View Source Code
+        </a>
+        <a class="btn btn-secondary" href="#demo">
+          Watch Demo
         </a>
       </div>
     </header>
 
     <main>
-      <section class="section demo-video-section">
+      <!-- DEMO VIDEO -->
+      <section id="demo" class="section demo-video-section">
         <div class="section-heading">
-          <span class="section-kicker">Live Demo</span>
+          <span class="section-kicker">Live demo</span>
           <h2>AI-assisted troubleshooting workflow</h2>
         </div>
-
         <div class="video-frame">
           <iframe
             src="https://www.youtube.com/embed/oMMUO7-ISmk"
@@ -45,6 +150,77 @@
         </div>
       </section>
 
+      <!-- WHAT THE ASSISTANT DOES -->
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">What it does</span>
+          <h2>From raw failure input to structured diagnosis</h2>
+        </div>
+        <div class="demo-panel">
+          <p>
+            Infrastructure engineers typically spend significant time manually correlating logs, error codes,
+            and symptoms before identifying a root cause. This assistant automates the first-pass diagnostic step —
+            you submit a structured failure description, and the system returns an actionable analysis in seconds.
+          </p>
+          <p style="margin-top:.75rem;">
+            The output is structured into four consistent sections, making it usable in runbooks, incident reports,
+            and escalation summaries.
+          </p>
+
+          <div class="output-preview">
+<span class="head">── Incident Diagnosis Output ──────────────────────</span>
+
+<span class="label">SUMMARY</span>
+<span class="value">Service unavailable due to pod crashloop — likely caused by a
+misconfigured environment variable pointing to an unreachable DB host.</span>
+
+<span class="label">PROBABLE CAUSES</span>
+<span class="value">1. DATABASE_HOST env var set to localhost instead of service FQDN
+2. PostgreSQL service not running or not exposed on expected port
+3. Network policy blocking inter-namespace traffic</span>
+
+<span class="label">VERIFICATION COMMANDS</span>
+<span class="cmd">kubectl describe pod api-pod -n production
+kubectl logs api-pod --previous
+kubectl get svc -n database
+kubectl exec -it api-pod -- curl postgres-svc:5432</span>
+
+<span class="label">REMEDIATION</span>
+<span class="value">Update DATABASE_HOST to postgres-svc.database.svc.cluster.local
+Redeploy the pod. Verify readiness probe passes before routing traffic.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAILURE SCENARIOS -->
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Test coverage</span>
+          <h2>Failure categories tested</h2>
+        </div>
+        <div class="demo-panel">
+          <p>The assistant was validated across 25+ scenarios spanning four failure domains:</p>
+          <div class="scenario-grid" style="margin-top:1rem;">
+            <span class="scenario-tag">Pod CrashLoopBackOff</span>
+            <span class="scenario-tag">Image pull errors</span>
+            <span class="scenario-tag">OOMKilled containers</span>
+            <span class="scenario-tag">DNS resolution failure</span>
+            <span class="scenario-tag">Network policy block</span>
+            <span class="scenario-tag">Service unreachable</span>
+            <span class="scenario-tag">DB connection refused</span>
+            <span class="scenario-tag">API 502 / 503 errors</span>
+            <span class="scenario-tag">Flux reconciliation error</span>
+            <span class="scenario-tag">Resource quota exceeded</span>
+            <span class="scenario-tag">Misconfigured env vars</span>
+            <span class="scenario-tag">Missing secrets</span>
+            <span class="scenario-tag">Probe misconfiguration</span>
+            <span class="scenario-tag">Node not ready</span>
+            <span class="scenario-tag">Ingress routing failure</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE -->
       <section class="section">
         <div class="section-heading">
           <span class="section-kicker">Architecture</span>
@@ -55,114 +231,84 @@
           <img src="images/ai-ops-architecture.png" alt="Architecture diagram for the AI Ops Assistant project" />
         </div>
 
-        <div class="overview-grid">
+        <div class="overview-grid" style="margin-top:1.5rem;">
           <div class="info-card">
             <h3>Frontend Interface</h3>
-            <p>User-facing dashboard for submitting logs and viewing structured diagnostics.</p>
+            <p>User-facing dashboard for submitting structured failure descriptions and viewing the diagnostic output — summary, causes, commands, and remediation steps.</p>
           </div>
           <div class="info-card">
             <h3>FastAPI Backend</h3>
-            <p>Backend service responsible for request handling, log processing, and model interaction.</p>
+            <p>Exposes <code>/api/analyze</code> endpoint. Receives JSON payloads describing failure scenarios, constructs structured prompts, forwards to the LLM, and returns parsed responses.</p>
           </div>
           <div class="info-card">
             <h3>Kubernetes Deployment</h3>
-            <p>Application services deployed on Kubernetes for orchestration and portability.</p>
+            <p>Both the frontend and backend run as containerised Kubernetes workloads (kind cluster), with Deployments and Services wiring the application flow together.</p>
           </div>
           <div class="info-card">
-            <h3>LLM Integration</h3>
-            <p>Connected to a local language model endpoint for incident reasoning and response generation.</p>
+            <h3>Local LLM via LM Studio</h3>
+            <p>A locally hosted language model serves inference — no external API calls, no data leaving the environment. Chosen for privacy, cost, and latency control.</p>
           </div>
           <div class="info-card">
-            <h3>NGINX Proxying</h3>
-            <p>Frontend and API routing configured to provide a clean application workflow.</p>
+            <h3>NGINX Reverse Proxy</h3>
+            <p>Routes frontend requests to the FastAPI backend, handling path-based proxying within the Kubernetes cluster cleanly.</p>
           </div>
           <div class="info-card">
-            <h3>Structured Diagnostics</h3>
-            <p>Outputs organised into summary, likely causes, verification commands, and remediation steps.</p>
+            <h3>Prompt Engineering</h3>
+            <p>Prompts are structured to enforce consistent four-part output — ensuring the LLM always returns actionable, formatted diagnostics rather than freeform text.</p>
           </div>
         </div>
       </section>
 
+      <!-- BUILD STEPS -->
       <section class="section">
         <div class="section-heading">
-          <span class="section-kicker">Highlights</span>
-          <h2>Key features</h2>
+          <span class="section-kicker">Build process</span>
+          <h2>How I built it</h2>
         </div>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Log Analysis</h3>
-            <p>Processes infrastructure and application logs to identify patterns and probable issues.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Structured Incident Output</h3>
-            <p>Generates responses in a clear operational format instead of raw model text.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Kubernetes Deployment</h3>
-            <p>Packaged and deployed as containerised services inside a Kubernetes environment.</p>
-          </div>
-          <div class="feature-card">
-            <h3>LLM-powered Reasoning</h3>
-            <p>Uses a local language model to transform raw logs into actionable technical guidance.</p>
-          </div>
-          <div class="feature-card">
-            <h3>API Integration</h3>
-            <p>Frontend communicates with the backend through a clean API flow for diagnosis requests.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Troubleshooting Focus</h3>
-            <p>Built to support faster root cause analysis and operator decision-making.</p>
-          </div>
+        <div class="demo-panel">
+          <ol class="step-list">
+            <li><strong>Local LLM setup:</strong> Installed LM Studio, selected a model suitable for structured technical output, and validated that it could produce consistent formatted responses.</li>
+            <li><strong>Prompt design:</strong> Engineered prompts that force four-section output — summary, probable causes, verification commands, remediation — regardless of input format.</li>
+            <li><strong>FastAPI backend:</strong> Built the <code>/api/analyze</code> endpoint to accept JSON failure payloads, inject them into the structured prompt, call the LM Studio API, and return parsed output.</li>
+            <li><strong>Frontend:</strong> Built a simple interface for submitting scenarios and displaying structured diagnostic sections clearly.</li>
+            <li><strong>Containerisation:</strong> Packaged both frontend and backend as Docker images with appropriate Dockerfiles for Kubernetes compatibility.</li>
+            <li><strong>Kubernetes deployment:</strong> Wrote Deployment and Service manifests for both services; added NGINX as a reverse proxy to route frontend requests to the API.</li>
+            <li><strong>Testing:</strong> Ran 25+ failure scenarios covering network failures, misconfigurations, service issues, and API errors — validating output quality and consistency.</li>
+          </ol>
         </div>
       </section>
 
+      <!-- WHAT IT PROVES -->
       <section class="section">
         <div class="section-heading">
-          <span class="section-kicker">Demonstration</span>
-          <h2>What the demo shows</h2>
+          <span class="section-kicker">Takeaway</span>
+          <h2>What this demonstrates</h2>
         </div>
-
         <div class="demo-panel">
           <ul class="feature-list">
-            <li>Submitting logs through the assistant interface</li>
-            <li>AI-generated incident summary and probable causes</li>
-            <li>Suggested commands to confirm the issue</li>
-            <li>Recommended remediation and prevention steps</li>
-            <li>Kubernetes-hosted backend responding through the application workflow</li>
+            <li>Practical application of LLM tooling to a real infrastructure problem — not a chatbot, a diagnostic tool</li>
+            <li>Kubernetes deployment of a multi-service application with proper networking and proxying</li>
+            <li>Prompt engineering skills: enforcing structured, operationally useful output from a local model</li>
+            <li>FastAPI API design: typed endpoints, structured request/response, clear separation of concerns</li>
+            <li>Testing discipline: 25+ structured scenarios across four failure domains with validated output quality</li>
           </ul>
           <div class="card-actions">
+            <a class="btn btn-primary" href="https://github.com/rai-trabelsi/ai-ops-assistant" target="_blank" rel="noreferrer">GitHub Repository</a>
             <a class="btn btn-ghost" href="index.html">Back to Home</a>
           </div>
         </div>
       </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Technical depth</span>
-          <h2>Implementation focus</h2>
-        </div>
-
-        <div class="overview-grid">
-          <div class="info-card">
-            <h3>FastAPI Service Design</h3>
-            <p>Backend endpoints built to receive log payloads and return structured diagnostic output.</p>
-          </div>
-          <div class="info-card">
-            <h3>Kubernetes Objects</h3>
-            <p>Deployments and services configured to expose the assistant reliably inside the cluster.</p>
-          </div>
-          <div class="info-card">
-            <h3>Prompt Structuring</h3>
-            <p>Prompt design used to enforce consistent output formatting and technical usefulness.</p>
-          </div>
-          <div class="info-card">
-            <h3>Frontend-to-Backend Flow</h3>
-            <p>Integrated request path between interface, proxy, API, and local language model endpoint.</p>
-          </div>
-        </div>
-      </section>
     </main>
+
+    <footer style="padding: 2rem 1.5rem; text-align: center; font-family: Inter, sans-serif; font-size: .8rem; color: #94a3b8; border-top: 1px solid #f1f5f9;">
+      📍 Tunis, Tunisia · Available for relocation · Visa sponsorship welcomed ·
+      <a href="mailto:rai.trabelsi@outlook.com" style="color:#64748b;">rai.trabelsi@outlook.com</a>
+    </footer>
+  </div>
+
+  <div class="hire-bar">
+    <a class="hire-ghost" href="index.html">← Portfolio</a>
+    <a class="hire-primary" href="mailto:rai.trabelsi@outlook.com">Hire me →</a>
   </div>
 </body>
 </html>
