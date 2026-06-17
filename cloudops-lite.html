@@ -4,23 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CloudOps Lite Platform | Rai Trabelsi</title>
+  <meta name="description" content="Production-inspired Kubernetes platform on Hetzner Cloud using k3s, FluxCD GitOps, Prometheus, Grafana, and a FastAPI microservice. Built by Rai Trabelsi." />
+  <meta property="og:title" content="CloudOps Lite Platform | Rai Trabelsi" />
+  <meta property="og:description" content="k3s on Hetzner Cloud · FluxCD GitOps · Prometheus + Grafana · FastAPI microservice with live metrics" />
+  <meta property="og:url" content="https://raitrabelsi.vercel.app/cloudops-lite.html" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 1.5rem 0; }
+    .stat-pill {
+      display: flex; flex-direction: column;
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 10px; padding: .75rem 1.25rem;
+      font-family: Inter, sans-serif;
+    }
+    .stat-pill .num { font-size: 1.5rem; font-weight: 800; color: #0f172a; line-height: 1; }
+    .stat-pill .lbl { font-size: .72rem; color: #64748b; margin-top: .2rem; }
+    .tech-tag {
+      display: inline-block;
+      background: #f1f5f9; color: #334155;
+      font-size: .75rem; font-weight: 600;
+      padding: .25rem .65rem; border-radius: 6px;
+      font-family: Inter, sans-serif; margin: .15rem;
+    }
+    .hire-bar {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      z-index: 100; display: flex; gap: .5rem;
+    }
+    .hire-bar a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.1rem; border-radius: 999px;
+      font-size: .82rem; font-weight: 600; font-family: Inter, sans-serif;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    }
+    .hire-bar a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .hire-bar .hire-primary { background: #0f172a; color: #fff; }
+    .hire-bar .hire-ghost { background: #fff; color: #0f172a; border: 1.5px solid #e2e8f0; }
+    .step-list { list-style: none; padding: 0; margin: 0; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: .75rem 0; border-bottom: 1px solid #f1f5f9;
+      font-family: Inter, sans-serif; font-size: .9rem; color: #334155;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      display: flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 26px;
+      background: #0f172a; color: #fff;
+      border-radius: 50%; font-size: .75rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li strong { color: #0f172a; font-weight: 600; }
+  </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="project-hero">
       <a class="back-link" href="index.html">← Back to portfolio</a>
-      <span class="eyebrow">Cloud · Kubernetes · GitOps</span>
+      <span class="eyebrow">Cloud · Kubernetes · GitOps · Observability</span>
       <h1>CloudOps Lite Platform on Hetzner Cloud</h1>
       <p class="hero-text">
-        Production-inspired Kubernetes platform deployed on Hetzner Cloud using k3s, GitOps,
-        CI/CD, Prometheus, Grafana, and a custom dashboard for infrastructure visibility.
+        A production-inspired Kubernetes platform deployed on a real cloud VPS — not a local lab.
+        Built with k3s, FluxCD GitOps, a containerised FastAPI service, Prometheus metrics collection,
+        Grafana dashboards, and a custom CloudOps monitoring dashboard.
       </p>
 
-      <div class="hero-actions">
+      <div class="stat-row">
+        <div class="stat-pill"><span class="num">1</span><span class="lbl">Hetzner VPS, real cloud</span></div>
+        <div class="stat-pill"><span class="num">2</span><span class="lbl">Live API endpoints</span></div>
+        <div class="stat-pill"><span class="num">7</span><span class="lbl">Technical screenshots</span></div>
+        <div class="stat-pill"><span class="num">100%</span><span class="lbl">GitOps-managed state</span></div>
+      </div>
+
+      <div style="margin-top: .5rem;">
+        <span class="tech-tag">k3s</span>
+        <span class="tech-tag">FluxCD</span>
+        <span class="tech-tag">Terraform</span>
+        <span class="tech-tag">FastAPI</span>
+        <span class="tech-tag">Prometheus</span>
+        <span class="tech-tag">Grafana</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">Hetzner Cloud</span>
+        <span class="tech-tag">GitHub</span>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 1.5rem;">
         <a class="btn btn-primary" href="https://github.com/rai-trabelsi/cloudops-lite-platform" target="_blank" rel="noreferrer">
           View Source Code
         </a>
@@ -31,239 +104,155 @@
     </header>
 
     <main>
+      <!-- DEMO VIDEO -->
+      <section class="section demo-video-section">
+        <div class="section-heading">
+          <span class="section-kicker">Live demo</span>
+          <h2>CloudOps Lite Platform demonstration</h2>
+        </div>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/J4jNHOg_WF0"
+            title="CloudOps Lite Platform Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- WHAT I BUILT -->
       <section class="section">
         <div class="section-heading">
           <span class="section-kicker">Project overview</span>
-          <h2>What I built</h2>
+          <h2>What this platform proves</h2>
         </div>
-
         <div class="demo-panel">
           <p>
-            CloudOps Lite is a lightweight cloud operations platform built to demonstrate
-            real-world DevOps and Platform Engineering practices. The project started as a
-            local Kubernetes lab and was later deployed on Hetzner Cloud using k3s.
+            CloudOps Lite demonstrates real DevOps and Platform Engineering practices on a live cloud environment.
+            The project went beyond a local Kubernetes lab — it was deployed publicly on Hetzner Cloud,
+            with GitOps-managed state, production-style observability, and a running API service.
           </p>
-
           <ul class="feature-list">
-            <li>Hetzner-hosted k3s Kubernetes cluster</li>
-            <li>GitOps workflow using FluxCD</li>
-            <li>Containerised FastAPI service deployed inside Kubernetes</li>
-            <li>Prometheus metrics collection</li>
-            <li>Grafana dashboards for monitoring and observability</li>
-            <li>Custom CloudOps dashboard showing platform health and metrics</li>
+            <li>Hetzner VPS provisioned and running a k3s Kubernetes cluster in production mode</li>
+            <li>FluxCD synchronising the cluster state directly from the GitHub repository — zero manual kubectl apply</li>
+            <li>FastAPI microservice containerised, deployed via Kubernetes manifests, exposing <code>/health</code> and <code>/metrics</code></li>
+            <li>Prometheus scraping application and infrastructure metrics on a live schedule</li>
+            <li>Grafana dashboards visualising service uptime, request counts, and pod health</li>
+            <li>Custom CloudOps dashboard aggregating cluster status, API health, and Prometheus/Grafana availability</li>
           </ul>
         </div>
       </section>
 
-     ```html
-<section class="section demo-video-section">
-  <div class="section-heading">
-    <span class="section-kicker">Live Demo</span>
-    <h2>CloudOps Lite Platform Demonstration</h2>
-  </div>
-
-  <div class="video-frame">
-    <iframe
-      src="https://www.youtube.com/embed/J4jNHOg_WF0"
-      title="CloudOps Lite Platform Demo"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-heading">
-    <span class="section-kicker">Project proof</span>
-    <h2>Deployment screenshots</h2>
-  </div>
-
-  <div class="overview-grid">
-    <div class="info-card">
-      <h3>CloudOps Dashboard</h3>
-      <p>
-        Custom dashboard showing Hetzner k3s status, API health, Prometheus, Grafana,
-        and platform metrics.
-      </p>
-      <div class="image-frame">
-        <img src="images/Dashboard-Overview.jpeg" alt="CloudOps Lite dashboard running on Hetzner Cloud" />
-      </div>
-    </div>
-
-    <div class="info-card">
-      <h3>Architecture Diagram</h3>
-      <p>
-        High-level architecture showing GitOps workflow, Hetzner Cloud VPS,
-        k3s cluster, FastAPI, Prometheus, and Grafana.
-      </p>
-      <div class="image-frame">
-        <img src="images/cloudops-architecture.jpeg" alt="CloudOps Lite Platform architecture diagram" />
-      </div>
-    </div>
-  </div>
-</section>
-```
+      <!-- ARCHITECTURE -->
+      <section id="architecture" class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Architecture</span>
+          <h2>How the platform is structured</h2>
+        </div>
 
         <div class="overview-grid">
           <div class="info-card">
-            <h3>Hetzner Cloud</h3>
-            <p>Public VPS environment hosting the Kubernetes platform and cloud operations stack.</p>
+            <h3>Dashboard &amp; Screenshots</h3>
+            <p>Custom CloudOps dashboard showing Hetzner k3s status, API health, Prometheus and Grafana status, and live platform metrics.</p>
+            <div class="image-frame" style="margin-top:.75rem;">
+              <img src="images/Dashboard-Overview.jpeg" alt="CloudOps Lite dashboard running on Hetzner Cloud" />
+            </div>
           </div>
+          <div class="info-card">
+            <h3>Architecture Diagram</h3>
+            <p>GitOps workflow: GitHub → FluxCD → k3s cluster on Hetzner Cloud. FastAPI, Prometheus, and Grafana all running as Kubernetes workloads.</p>
+            <div class="image-frame" style="margin-top:.75rem;">
+              <img src="images/cloudops-architecture.jpeg" alt="CloudOps Lite Platform architecture diagram" />
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- HOW IT WAS BUILT -->
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Build process</span>
+          <h2>How I built it, step by step</h2>
+        </div>
+        <div class="demo-panel">
+          <ol class="step-list">
+            <li><strong>Provision:</strong> Created a Hetzner Cloud VPS and installed k3s to bootstrap a lightweight production Kubernetes environment.</li>
+            <li><strong>GitOps setup:</strong> Installed FluxCD and bootstrapped it against the GitHub repository so all cluster changes flow through Git — no manual apply commands.</li>
+            <li><strong>Application deployment:</strong> Built a FastAPI microservice, containerised it with Docker, and wrote Kubernetes Deployment + Service manifests managed by Flux.</li>
+            <li><strong>Metrics exposure:</strong> Added a Prometheus-compatible <code>/metrics</code> endpoint to the FastAPI service and a <code>/health</code> endpoint for liveness probes.</li>
+            <li><strong>Observability stack:</strong> Deployed Prometheus via Kubernetes manifests (Flux-managed) to scrape application metrics; connected Grafana with pre-built dashboards.</li>
+            <li><strong>Custom dashboard:</strong> Built a CloudOps dashboard that queries the live cluster and APIs to show real-time platform status in one view.</li>
+            <li><strong>IaC structure:</strong> Organised the entire repo using a Terraform-inspired directory structure for clean, reproducible deployments.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- COMPONENT BREAKDOWN -->
+      <section class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Stack breakdown</span>
+          <h2>Key components</h2>
+        </div>
+        <div class="overview-grid">
+          <div class="info-card">
+            <h3>Hetzner Cloud VPS</h3>
+            <p>Public cloud VPS — not localhost. Real egress, real IP, real latency. The platform runs on production infrastructure, not a desktop VM.</p>
+          </div>
           <div class="info-card">
             <h3>k3s Kubernetes</h3>
-            <p>Lightweight Kubernetes distribution used to run containerised services efficiently.</p>
+            <p>Lightweight Kubernetes distribution ideal for single-node cloud deployments. Managed namespaces, deployments, and services for all workloads.</p>
           </div>
-
           <div class="info-card">
             <h3>FluxCD GitOps</h3>
-            <p>Automatic synchronisation of Kubernetes manifests from GitHub to the cluster.</p>
+            <p>Cluster state is always a reflection of the GitHub repository. Any commit triggers automatic reconciliation — no imperative kubectl commands.</p>
           </div>
-
           <div class="info-card">
-            <h3>FastAPI Service</h3>
-            <p>Containerised API exposing health and metrics endpoints for platform validation.</p>
+            <h3>FastAPI Microservice</h3>
+            <p>Containerised Python API with two operational endpoints: <code>/health</code> returns service status; <code>/metrics</code> exposes Prometheus-compatible counters and gauges.</p>
           </div>
-
           <div class="info-card">
             <h3>Prometheus</h3>
-            <p>Metrics collection system used to scrape application and infrastructure data.</p>
+            <p>Deployed as a Kubernetes workload, configured to scrape the FastAPI service on a fixed interval. Metrics stored and queryable via PromQL.</p>
           </div>
-
           <div class="info-card">
             <h3>Grafana</h3>
-            <p>Observability dashboard layer for visualising metrics and monitoring service status.</p>
+            <p>Connected to Prometheus as a datasource. Dashboards visualise request rates, pod health, and service uptime over time.</p>
           </div>
         </div>
       </section>
 
+      <!-- WHAT IT PROVES -->
       <section class="section">
         <div class="section-heading">
-          <span class="section-kicker">Highlights</span>
-          <h2>Key features</h2>
+          <span class="section-kicker">Takeaway</span>
+          <h2>What this demonstrates</h2>
         </div>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Real Cloud Deployment</h3>
-            <p>
-              Deployed the platform on Hetzner Cloud instead of keeping it only as a local lab.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Kubernetes Operations</h3>
-            <p>
-              Managed namespaces, deployments, services, and workloads inside a k3s cluster.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h3>GitOps Workflow</h3>
-            <p>
-              Used FluxCD to keep the cluster state synchronised with the GitHub repository.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h3>CI/CD Ready</h3>
-            <p>
-              Structured the project for automated build, validation, and deployment workflows.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Monitoring Stack</h3>
-            <p>
-              Integrated Prometheus and Grafana to observe application health and platform metrics.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <h3>Custom Dashboard</h3>
-            <p>
-              Built a simple CloudOps dashboard to display API health, metrics, and service status.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Technical depth</span>
-          <h2>Implementation focus</h2>
-        </div>
-
-        <div class="overview-grid">
-          <div class="info-card">
-            <h3>Cluster Bootstrap</h3>
-            <p>
-              Provisioned a lightweight Kubernetes environment using k3s on a Hetzner VPS.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Application Deployment</h3>
-            <p>
-              Built and deployed a FastAPI microservice with Kubernetes deployment and service manifests.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Metrics Endpoint</h3>
-            <p>
-              Exposed application metrics through a Prometheus-compatible endpoint.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Observability</h3>
-            <p>
-              Connected Prometheus and Grafana to monitor platform health and application behaviour.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Repository Structure</h3>
-            <p>
-              Organised Kubernetes manifests and application code for clean GitOps-based operations.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Cloud Migration</h3>
-            <p>
-              Migrated the project from a local Ubuntu Server lab to a public Hetzner Cloud deployment.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Demonstration</span>
-          <h2>What the project proves</h2>
-        </div>
-
         <div class="demo-panel">
           <ul class="feature-list">
-            <li>Ability to deploy Kubernetes workloads on a real cloud VPS</li>
-            <li>Understanding of GitOps-based infrastructure management</li>
-            <li>Experience with monitoring and observability tools</li>
-            <li>Ability to expose health checks and metrics from an application</li>
-            <li>Knowledge of cloud deployment, containerisation, and platform operations</li>
+            <li>Ability to deploy and operate Kubernetes workloads on a real public cloud VPS</li>
+            <li>Hands-on GitOps with FluxCD — not just theory, but a running reconciliation loop</li>
+            <li>End-to-end observability: application exposes metrics, Prometheus collects them, Grafana visualises them</li>
+            <li>Clean IaC project structure for reproducible, documented deployments</li>
+            <li>API design with operational endpoints (/health, /metrics) following DevOps best practices</li>
           </ul>
-
           <div class="card-actions">
-            <a class="btn btn-primary" href="https://github.com/rai-trabelsi/cloudops-lite-platform" target="_blank" rel="noreferrer">
-              GitHub Repository
-            </a>
+            <a class="btn btn-primary" href="https://github.com/rai-trabelsi/cloudops-lite-platform" target="_blank" rel="noreferrer">GitHub Repository</a>
             <a class="btn btn-ghost" href="index.html">Back to Home</a>
           </div>
         </div>
       </section>
     </main>
+
+    <footer style="padding: 2rem 1.5rem; text-align: center; font-family: Inter, sans-serif; font-size: .8rem; color: #94a3b8; border-top: 1px solid #f1f5f9;">
+      📍 Tunis, Tunisia · Available for relocation · Visa sponsorship welcomed ·
+      <a href="mailto:rai.trabelsi@outlook.com" style="color:#64748b;">rai.trabelsi@outlook.com</a>
+    </footer>
+  </div>
+
+  <div class="hire-bar">
+    <a class="hire-ghost" href="index.html">← Portfolio</a>
+    <a class="hire-primary" href="mailto:rai.trabelsi@outlook.com">Hire me →</a>
   </div>
 </body>
 </html>
