@@ -4,53 +4,169 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rai Trabelsi | Cloud & Infrastructure Engineer</title>
+  <meta name="description" content="Cloud & Infrastructure Engineer specializing in Kubernetes, DevOps, GitOps, and secure infrastructure. Available for relocation worldwide. Visa sponsorship welcomed." />
+  <meta property="og:title" content="Rai Trabelsi | Cloud & Infrastructure Engineer" />
+  <meta property="og:description" content="Building resilient, production-grade infrastructure with Proxmox, Docker Swarm, Kubernetes, pfSense, and modern DevOps tooling." />
+  <meta property="og:url" content="https://raitrabelsi.vercel.app" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Rai Trabelsi | Cloud & Infrastructure Engineer" />
+  <meta name="twitter:description" content="Cloud & Infrastructure Engineer. Kubernetes · DevOps · GitOps · Linux. Open to relocation worldwide." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Hire-me sticky bar ───────────────────────────────── */
+    .hire-bar {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      display: flex;
+      gap: .5rem;
+    }
+    .hire-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem 1.1rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    }
+    .hire-bar a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .hire-bar .hire-primary { background: #0f172a; color: #fff; }
+    .hire-bar .hire-secondary { background: #fff; color: #0f172a; border: 1.5px solid #e2e8f0; }
+
+    /* ── Stats ──────────────────────────────────────────────── */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .75rem;
+      color: #64748b;
+      margin-top: .2rem;
+    }
+
+    /* ── Availability badge ─────────────────────────────────── */
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: .3rem .8rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-family: Inter, sans-serif;
+    }
+    .avail-dot {
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; } 50% { opacity:.4; }
+    }
+
+    /* ── Visa note ─────────────────────────────────────────── */
+    .visa-note {
+      font-size: .8rem;
+      color: #64748b;
+      margin-top: .6rem;
+      font-family: Inter, sans-serif;
+    }
+    .visa-note strong { color: #0f172a; }
+  </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="hero">
       <nav class="topbar">
         <div class="brand">Rai Trabelsi</div>
-       
-<div class="nav-links">
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="https://github.com/rai-trabelsi" target="_blank" rel="noreferrer">GitHub</a>
-  <a class="btn btn-small btn-ghost" href="mailto:rai.trabelsi@outlook.com">Contact</a>
-</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="https://github.com/rai-trabelsi" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-small btn-ghost" href="mailto:rai.trabelsi@outlook.com">Contact</a>
+        </div>
+      </nav>
 
+      <div class="hero-content">
+        <div class="hero-profile">
+          <img src="images/rai-profile.jpeg" alt="Rai Trabelsi profile photo" class="profile-avatar" />
+          <div>
+            <span class="profile-label">Cloud & Infrastructure Engineer</span>
+            <p class="profile-name">Rai Trabelsi</p>
+          </div>
+        </div>
 
-     
-<div class="hero-content">
-  <div class="hero-profile">
-    <img src="images/rai-profile.jpeg" alt="Rai Trabelsi profile photo" class="profile-avatar" />
-    <div>
-      <span class="profile-label">Cloud & Infrastructure Engineer</span>
-      <p class="profile-name">Rai Trabelsi</p>
-    </div>
-  </div>
+        <div class="avail-badge">
+          <span class="avail-dot"></span>
+          Open to relocation worldwide · Visa sponsorship welcomed
+        </div>
 
-  <span class="eyebrow">Cloud · Infrastructure · DevOps · Platform Engineering</span>
-
-
+        <span class="eyebrow">Cloud · Infrastructure · DevOps · Platform Engineering</span>
         <h1>Building resilient infrastructure for real-world environments.</h1>
         <p class="hero-text">
           I design and deploy secure networks, high-availability systems, and containerised platforms
           using Proxmox, pfSense, Docker Swarm, HAProxy, monitoring, and automation workflows.
+          My final-year micro data center project was graded <strong>19.5&nbsp;/&nbsp;20</strong>.
         </p>
 
-       <div class="hero-actions">
-  <a class="btn btn-primary" href="#projects">View Projects</a>
-  <a class="btn btn-secondary" href="micro-datacenter.html">Open Micro Data Centre</a>
-  <a class="btn btn-ghost" href="https://github.com/rai-trabelsi" target="_blank" rel="noreferrer">GitHub Profile</a>
-</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="micro-datacenter.html">Open Micro Data Centre</a>
+          <a class="btn btn-ghost" href="https://github.com/rai-trabelsi" target="_blank" rel="noreferrer">GitHub Profile</a>
+        </div>
 
         <div class="hero-stats">
-          
+          <div class="stat">
+            <span class="stat-num">19.5<span style="font-size:1rem">/20</span></span>
+            <span class="stat-label">Final year project grade</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">VLANs engineered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Production-grade platforms built</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">25+</span>
+            <span class="stat-label">Failure scenarios tested</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">60%</span>
+            <span class="stat-label">Deployment effort reduced via CI/CD</span>
+          </div>
         </div>
+
+        <p class="visa-note">📍 Based in <strong>Tunis, Tunisia</strong> · Open to relocation to Europe, Canada, UAE, and beyond · Visa sponsorship required and welcomed</p>
       </div>
     </header>
 
@@ -62,17 +178,20 @@
         </div>
 
         <div class="project-grid">
+          <!-- Flagship -->
           <article class="project-card project-card-featured">
-            <div class="project-badge">Flagship Project</div>
+            <div class="project-badge">Flagship · Grade 19.5/20</div>
             <h3>Secure Virtualised Micro Data Centre for Odoo SaaS</h3>
             <p>
-              High-availability infrastructure built with Proxmox, pfSense, Docker Swarm, HAProxy,
-              PostgreSQL, Redis, GitLab CI/CD, Prometheus, and Grafana.
+              High-availability infrastructure on Proxmox with Docker Swarm (5-node cluster),
+              pfSense across 10+ VLANs, HAProxy failover, GitLab CI/CD automation, and full
+              Prometheus + Grafana observability. Zero downtime during live failure simulations.
             </p>
             <ul class="feature-list">
-              <li>Cluster-based virtualised infrastructure</li>
-              <li>Network segmentation with VLAN isolation</li>
-              <li>Load balancing, failover, and monitoring</li>
+              <li>8–12 VMs across segmented networks</li>
+              <li>60% reduction in deployment effort via CI/CD</li>
+              <li>Multi-tenant Odoo SaaS with isolated databases</li>
+              <li>Live failover validated with zero service interruption</li>
             </ul>
             <div class="card-actions">
               <a class="btn btn-primary" href="micro-datacenter.html">View Project</a>
@@ -80,79 +199,92 @@
             </div>
           </article>
 
-          
-
+          <!-- CloudOps Lite -->
           <article class="project-card">
-  <div class="project-icon">☸</div>
-  <h3>CloudOps Lite Platform</h3>
-  <p>
-    Kubernetes platform deployed on Hetzner Cloud with k3s, FluxCD GitOps,
-    CI/CD structure, Prometheus, Grafana, and a custom monitoring dashboard.
-  </p>
-  <ul class="feature-list">
-    <li>Hetzner-hosted k3s cluster</li>
-    <li>GitOps deployment with FluxCD</li>
-    <li>Prometheus and Grafana monitoring</li>
-  </ul>
-  <div class="card-actions">
-    <a class="btn btn-primary" href="cloudops-lite.html">View Project</a>
-    <a class="btn btn-ghost" href="https://github.com/rai-trabelsi/cloudops-lite-platform" target="_blank" rel="noreferrer">GitHub</a>
-  </div>
-</article>
+            <div class="project-icon">☸</div>
+            <h3>CloudOps Lite Platform</h3>
+            <p>
+              Production-inspired Kubernetes platform on Hetzner Cloud using k3s, FluxCD GitOps,
+              Prometheus, Grafana, and a FastAPI microservice with live health and metrics endpoints.
+            </p>
+            <ul class="feature-list">
+              <li>Real cloud deployment on Hetzner VPS</li>
+              <li>GitOps sync from GitHub to k3s via FluxCD</li>
+              <li>Custom CloudOps dashboard for platform health</li>
+              <li>Full Prometheus + Grafana observability stack</li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-primary" href="cloudops-lite.html">View Project</a>
+              <a class="btn btn-ghost" href="https://github.com/rai-trabelsi/cloudops-lite-platform" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </article>
+
+          <!-- AI Ops -->
           <article class="project-card">
             <div class="project-icon">🤖</div>
             <h3>AI Ops Assistant</h3>
             <p>
-              AI-assisted troubleshooting concept for analysing logs, identifying anomalies,
-              and supporting infrastructure diagnostics.
+              Kubernetes-deployed AI diagnostic assistant using FastAPI, NGINX, and a locally
+              hosted LLM to analyse infrastructure failures and return structured root cause analysis.
             </p>
+            <ul class="feature-list">
+              <li>25+ failure scenarios tested and validated</li>
+              <li>Structured output: summary, causes, commands, remediation</li>
+              <li>Deployed on Kubernetes (kind) with full API flow</li>
+            </ul>
+            <div class="card-actions">
               <a class="btn btn-primary" href="ai-ops-assistant.html">View Project</a>
-              <a class="btn btn-ghost" href="https://github.com/rai-trabelsi/micro_datacenter_repo" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn btn-ghost" href="https://github.com/rai-trabelsi/ai-ops-assistant" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
           </article>
         </div>
       </section>
 
-     
-<section id="skills" class="section">
-  <div class="section-heading">
-    <span class="section-kicker">Core stack</span>
-    <h2>Skills</h2>
-  </div>
+      <section id="skills" class="section">
+        <div class="section-heading">
+          <span class="section-kicker">Core stack</span>
+          <h2>Skills</h2>
+        </div>
 
-  <div class="skills-grid">
-    <div class="skill-block">
-      <h3>Infrastructure & Cloud</h3>
-      <p>Hetzner Cloud, Proxmox VE, Linux, Ubuntu Server, virtualisation, high availability, backup and recovery</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>Networking & Security</h3>
-      <p>VLANs, pfSense, routing, segmentation, firewalling, reverse proxy, secure access, infrastructure isolation</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>Containers & Orchestration</h3>
-      <p>Docker, Docker Swarm, Kubernetes, k3s, deployments, services, namespaces, containerised workloads</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>DevOps & GitOps</h3>
-      <p>GitHub, GitLab CI/CD, FluxCD, GitOps workflows, automation, validation, deployment pipelines</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>Monitoring & Observability</h3>
-      <p>Prometheus, Grafana, metrics endpoints, dashboards, service health checks, platform visibility</p>
-    </div>
-
-    <div class="skill-block">
-      <h3>Backend & Infrastructure Code</h3>
-      <p>FastAPI, Terraform structure, API health checks, metrics exposure, infrastructure documentation</p>
-    </div>
-  </div>
-</section>
-
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h3>Infrastructure & Cloud</h3>
+            <p>Hetzner Cloud, Proxmox VE, VMware ESXi, Linux, Ubuntu Server, virtualisation, high availability, backup and recovery</p>
+          </div>
+          <div class="skill-block">
+            <h3>Networking & Security</h3>
+            <p>VLANs, pfSense, FortiGate, HAProxy, routing, segmentation, firewalling, reverse proxy, secure access</p>
+          </div>
+          <div class="skill-block">
+            <h3>Containers & Orchestration</h3>
+            <p>Docker, Docker Swarm, Kubernetes, k3s, kind, deployments, services, namespaces, containerised workloads</p>
+          </div>
+          <div class="skill-block">
+            <h3>DevOps & GitOps</h3>
+            <p>GitHub, GitLab CI/CD, FluxCD, GitOps workflows, Terraform, automation, deployment pipelines</p>
+          </div>
+          <div class="skill-block">
+            <h3>Monitoring & Observability</h3>
+            <p>Prometheus, Grafana, metrics endpoints, dashboards, service health checks, platform visibility</p>
+          </div>
+          <div class="skill-block">
+            <h3>Backend & Infrastructure Code</h3>
+            <p>Python, FastAPI, REST APIs, Bash, Terraform, health check endpoints, metrics exposure</p>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer style="padding: 2rem 1.5rem; text-align: center; font-family: Inter, sans-serif; font-size: .8rem; color: #94a3b8; border-top: 1px solid #f1f5f9;">
+      📍 Tunis, Tunisia · Available for relocation · Visa sponsorship welcomed ·
+      <a href="mailto:rai.trabelsi@outlook.com" style="color:#64748b;">rai.trabelsi@outlook.com</a>
+    </footer>
+  </div>
+
+  <!-- Sticky hire bar -->
+  <div class="hire-bar">
+    <a class="hire-secondary" href="https://www.linkedin.com/in/raitrabelsi" target="_blank" rel="noreferrer">LinkedIn</a>
+    <a class="hire-primary" href="mailto:rai.trabelsi@outlook.com">Hire me →</a>
   </div>
 </body>
 </html>
