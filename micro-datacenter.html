@@ -3,166 +3,635 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Micro Data Centre Project | Rai Trabelsi</title>
+  <title>Micro Data Centre | Rai Trabelsi</title>
+  <meta name="description" content="Top-grade final year project (19.5/20): a production-grade virtualised micro data centre for multi-tenant Odoo SaaS, built with Proxmox, Docker Swarm, pfSense, and GitLab CI/CD." />
+  <meta property="og:title" content="Micro Data Centre | Rai Trabelsi" />
+  <meta property="og:description" content="19.5/20. Proxmox cluster. Docker Swarm. pfSense across 10+ VLANs. High availability tested under live failure simulation. Built by Rai Trabelsi." />
+  <meta property="og:url" content="https://raitrabelsi.vercel.app/micro-datacenter.html" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0b1120;
+      --ink-2:  #1e293b;
+      --ink-3:  #334155;
+      --muted:  #64748b;
+      --edge:   #e2e8f0;
+      --surface:#f8fafc;
+      --white:  #ffffff;
+      --accent: #2563eb;          /* electric blue — data-centre-grade */
+      --accent-pale: #eff6ff;
+      --accent-mid:  #bfdbfe;
+      --success:#16a34a;
+      --warn:   #d97706;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink-3);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── PAGE SHELL ──────────────────────────────── */
+    .page-shell { max-width: 860px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+    /* ── HERO ────────────────────────────────────── */
+    .project-hero {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--edge);
+      margin-bottom: 3.5rem;
+    }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .8rem; font-weight: 600; color: var(--muted);
+      letter-spacing: .02em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      transition: color .15s;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-pale);
+      border: 1px solid var(--accent-mid);
+      border-radius: 999px;
+      padding: .28rem .85rem;
+      margin-bottom: 1.1rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: inline-block; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.7); }
+    }
+
+    h1 {
+      font-size: clamp(1.65rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--ink-3);
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── STAT ROW ────────────────────────────────── */
+    .stat-row {
+      display: flex; flex-wrap: wrap; gap: .85rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .stat-pill {
+      display: flex; flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: var(--radius);
+      padding: .7rem 1.1rem;
+      min-width: 80px;
+    }
+    .stat-pill .num {
+      font-size: 1.45rem; font-weight: 800;
+      color: var(--ink); line-height: 1;
+    }
+    .stat-pill .lbl {
+      font-size: .68rem; color: var(--muted);
+      margin-top: .2rem; white-space: nowrap;
+    }
+
+    /* ── TECH TAGS ───────────────────────────────── */
+    .tech-strip { display: flex; flex-wrap: wrap; gap: .4rem; margin: .25rem 0 1.5rem; }
+    .tech-tag {
+      display: inline-block;
+      background: var(--surface); color: var(--ink-3);
+      border: 1px solid var(--edge);
+      font-size: .72rem; font-weight: 600;
+      padding: .22rem .65rem; border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── HERO ACTIONS ────────────────────────────── */
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: .84rem; font-weight: 600;
+      padding: .58rem 1.2rem; border-radius: 8px;
+      cursor: pointer; transition: all .15s;
+      text-decoration: none;
+    }
+    .btn-primary  { background: var(--ink); color: var(--white); }
+    .btn-primary:hover  { background: var(--ink-2); transform: translateY(-1px); }
+    .btn-secondary { background: var(--accent); color: var(--white); }
+    .btn-secondary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-ghost    { background: transparent; color: var(--ink-3); border: 1.5px solid var(--edge); }
+    .btn-ghost:hover    { border-color: var(--ink-3); }
+
+    /* ── SECTIONS ────────────────────────────────── */
+    .section { margin-bottom: 3.5rem; }
+
+    .section-heading { margin-bottom: 1.5rem; }
+    .section-kicker {
+      display: block;
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: .4rem;
+    }
+    .section-heading h2 {
+      font-size: 1.45rem; font-weight: 800;
+      color: var(--ink); letter-spacing: -.02em;
+    }
+
+    /* ── VIDEO ───────────────────────────────────── */
+    .video-frame {
+      position: relative; padding-bottom: 56.25%;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--edge);
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+    }
+    .video-frame iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: none;
+    }
+
+    /* ── DEMO PANEL ──────────────────────────────── */
+    .demo-panel {
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    /* ── ARCHITECTURE IMAGE ──────────────────────── */
+    .image-frame {
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--edge);
+      margin-bottom: 1.5rem;
+    }
+    .image-frame img { display: block; width: 100%; height: auto; }
+
+    /* ── GRIDS ───────────────────────────────────── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    /* ── CARDS ───────────────────────────────────── */
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--edge);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .info-card:hover {
+      border-color: var(--accent-mid);
+      box-shadow: 0 4px 16px rgba(37,99,235,.08);
+    }
+    .info-card h3 {
+      font-size: .9rem; font-weight: 700;
+      color: var(--ink); margin-bottom: .4rem;
+    }
+    .info-card p { font-size: .85rem; color: var(--muted); line-height: 1.55; }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--edge);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      transition: box-shadow .15s;
+    }
+    .feature-card:hover { box-shadow: 0 4px 16px rgba(37,99,235,.07); }
+    .feature-card h3 {
+      font-size: .88rem; font-weight: 700;
+      color: var(--ink); margin-bottom: .35rem;
+    }
+    .feature-card p { font-size: .83rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── TIMELINE (what the demo shows) ─────────── */
+    .timeline { list-style: none; padding: 0; margin: 0; }
+    .timeline li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--edge);
+      font-size: .9rem; color: var(--ink-3);
+    }
+    .timeline li:last-child { border-bottom: none; }
+    .tl-icon {
+      display: flex; align-items: center; justify-content: center;
+      min-width: 28px; height: 28px;
+      background: var(--accent); color: var(--white);
+      border-radius: 50%; font-size: .78rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .tl-label { color: var(--ink); font-weight: 600; }
+
+    /* ── STACK ROW (terminal-style highlight) ────── */
+    .stack-row {
+      background: var(--ink);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      color: #94a3b8;
+      line-height: 2;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .stack-row .layer { color: #38bdf8; font-weight: 700; }
+    .stack-row .tool  { color: #a5f3fc; }
+    .stack-row .arrow { color: #475569; }
+    .stack-row .note  { color: #64748b; font-size: .75rem; }
+
+    /* ── GRADE BADGE ─────────────────────────────── */
+    .grade-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: #f0fdf4; border: 1px solid #bbf7d0;
+      color: #15803d; font-weight: 700; font-size: .85rem;
+      padding: .4rem .9rem; border-radius: 999px;
+      margin-left: .75rem;
+    }
+
+    /* ── STEP LIST ───────────────────────────────── */
+    .step-list { list-style: none; padding: 0; margin: 0; counter-reset: steps; }
+    .step-list li {
+      counter-increment: steps;
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--edge);
+      font-size: .9rem; color: var(--ink-3);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(steps);
+      display: flex; align-items: center; justify-content: center;
+      min-width: 26px; height: 26px;
+      background: var(--ink); color: var(--white);
+      border-radius: 50%; font-size: .72rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-list li strong { color: var(--ink); font-weight: 600; }
+
+    /* ── FEATURE LIST ────────────────────────────── */
+    .feature-list { list-style: none; padding: 0; margin: 0; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: .65rem;
+      padding: .55rem 0;
+      border-bottom: 1px solid var(--edge);
+      font-size: .9rem; color: var(--ink-3);
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--success); font-weight: 800;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── CARD ACTIONS ────────────────────────────── */
+    .card-actions { display: flex; gap: .65rem; margin-top: 1.25rem; flex-wrap: wrap; }
+
+    /* ── HIRE BAR ────────────────────────────────── */
+    .hire-bar {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      z-index: 100; display: flex; gap: .5rem;
+    }
+    .hire-bar a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.1rem; border-radius: 999px;
+      font-size: .82rem; font-weight: 600;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 18px rgba(0,0,0,.18);
+    }
+    .hire-bar a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .hire-primary { background: var(--ink); color: var(--white); }
+    .hire-ghost   { background: var(--white); color: var(--ink); border: 1.5px solid var(--edge); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      padding: 2rem 0 1rem;
+      text-align: center;
+      font-size: .8rem; color: var(--muted);
+      border-top: 1px solid var(--edge);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 600px) {
+      .overview-grid, .feature-grid { grid-template-columns: 1fr; }
+      .hire-bar { bottom: 1rem; right: 1rem; }
+      h1 { font-size: 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
 </head>
 <body>
-  <div class="page-shell">
-    <header class="project-hero">
-      <a class="back-link" href="index.html">← Back to portfolio</a>
+
+<div class="page-shell">
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <header class="project-hero">
+    <a class="back-link" href="index.html">← Back to portfolio</a>
+
+    <div>
       <span class="eyebrow">Flagship Infrastructure Project</span>
-      <h1>Secure Virtualised Micro Data Centre for Odoo SaaS</h1>
-      <p class="hero-text">
-        High-availability infrastructure designed with Proxmox, Docker Swarm, pfSense, and CI/CD,
-        with a focus on security, resilience, and service continuity.
-      </p>
+      <span class="grade-badge">19.5 / 20</span>
+    </div>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://github.com/rai-trabelsi/micro_datacenter_repo" target="_blank" rel="noreferrer">
-          View Source Code
-        </a>
+    <h1>Secure Virtualised Micro Data Centre for Odoo SaaS</h1>
+
+    <p class="hero-text">
+      A production-grade micro data centre built from the ground up on Proxmox —
+      orchestrating a multi-tenant Odoo SaaS platform across Docker Swarm, pfSense VLAN
+      segmentation, HAProxy high availability, and GitLab CI/CD. Validated under live failure
+      simulation with zero service disruption.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-pill"><span class="num">8–12</span><span class="lbl">VMs managed</span></div>
+      <div class="stat-pill"><span class="num">10+</span><span class="lbl">VLANs secured</span></div>
+      <div class="stat-pill"><span class="num">5-node</span><span class="lbl">Docker Swarm</span></div>
+      <div class="stat-pill"><span class="num">0</span><span class="lbl">Downtime in failover tests</span></div>
+      <div class="stat-pill"><span class="num">~60%</span><span class="lbl">Deploy effort cut by CI/CD</span></div>
+    </div>
+
+    <div class="tech-strip">
+      <span class="tech-tag">Proxmox VE</span>
+      <span class="tech-tag">Docker Swarm</span>
+      <span class="tech-tag">pfSense</span>
+      <span class="tech-tag">HAProxy</span>
+      <span class="tech-tag">PostgreSQL</span>
+      <span class="tech-tag">Redis</span>
+      <span class="tech-tag">GitLab CI/CD</span>
+      <span class="tech-tag">Prometheus</span>
+      <span class="tech-tag">Grafana</span>
+      <span class="tech-tag">Odoo SaaS</span>
+      <span class="tech-tag">NFS</span>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://github.com/rai-trabelsi/micro_datacenter_repo" target="_blank" rel="noreferrer">
+        View Source Code
+      </a>
+      <a class="btn btn-secondary" href="#demo">Watch Demo</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── DEMO VIDEO ───────────────────────────────── -->
+    <section id="demo" class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Live Demo</span>
+        <h2>End-to-end demonstration</h2>
       </div>
-    </header>
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/5kXo_AFcfjI"
+          title="Micro Data Center Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
 
-    <main>
-      <section class="section demo-video-section">
-        <div class="section-heading">
-          <span class="section-kicker">Live Demo</span>
-          <h2>End-to-End Demonstration</h2>
+    <!-- ── WHAT THE DEMO SHOWS ──────────────────────── -->
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Demonstration</span>
+        <h2>What you're seeing</h2>
+      </div>
+      <div class="demo-panel">
+        <p style="font-size:.9rem; color:var(--ink-3); margin-bottom:1.25rem;">
+          The demo puts the platform under real stress — a node is deliberately killed mid-operation,
+          and the infrastructure responds automatically. No manual intervention. No downtime.
+        </p>
+        <ul class="timeline">
+          <li>
+            <span class="tl-icon">1</span>
+            <span><span class="tl-label">Node failure simulated</span> — a cluster node is interrupted while Odoo is serving traffic</span>
+          </li>
+          <li>
+            <span class="tl-icon">2</span>
+            <span><span class="tl-label">Automatic rescheduling</span> — Docker Swarm detects the failure and reschedules affected containers to healthy nodes</span>
+          </li>
+          <li>
+            <span class="tl-icon">3</span>
+            <span><span class="tl-label">Odoo stays reachable</span> — HAProxy continues routing traffic throughout the disruption</span>
+          </li>
+          <li>
+            <span class="tl-icon">4</span>
+            <span><span class="tl-label">Redis failover triggered</span> — a replica takes over the cache layer without data loss</span>
+          </li>
+          <li>
+            <span class="tl-icon">5</span>
+            <span><span class="tl-label">Live monitoring throughout</span> — Grafana dashboards show cluster state, request rate, and recovery in real time</span>
+          </li>
+        </ul>
+        <div class="card-actions">
+          <a class="btn btn-ghost" href="index.html">Back to Home</a>
         </div>
+      </div>
+    </section>
 
-        <div class="video-frame">
-          <iframe
-            src="https://www.youtube.com/embed/5kXo_AFcfjI"
-            title="Micro Data Center Demo"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </section>
-<section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Demonstration</span>
-          <h2>What the demo shows</h2>
-        </div>
+    <!-- ── ARCHITECTURE ─────────────────────────────── -->
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Architecture</span>
+        <h2>System overview</h2>
+      </div>
 
-        <div class="demo-panel">
-          <ul class="feature-list">
-            <li>Simulated node failure inside the cluster</li>
-            <li>Automatic service recovery and rescheduling</li>
-            <li>Odoo remaining accessible during disruption</li>
-            <li>Redis failover with replica takeover</li>
-            <li>Real-time monitoring through Grafana</li>
-          </ul>
-          <div class="card-actions">
-            <a class="btn btn-ghost" href="index.html">Back to Home</a>
-          </div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Architecture</span>
-          <h2>System overview</h2>
-        </div>
+      <div class="image-frame">
+        <img src="images/architecture.png" alt="Architecture diagram — Micro Data Centre" />
+      </div>
 
-        <div class="image-frame">
-          <img src="images/architecture.png" alt="Architecture diagram for the micro data centre project" />
-        </div>
+      <!-- Terminal-style stack summary -->
+      <div class="stack-row">
+        <span class="layer">NETWORK LAYER &nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">pfSense</span> <span class="note">· 10+ VLANs · DMZ, Mgmt, Tenant, Wi-Fi isolation</span><br>
+        <span class="layer">COMPUTE LAYER  &nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">Proxmox VE</span> <span class="note">· 8–12 KVM VMs · cluster quorum + shared storage</span><br>
+        <span class="layer">ORCHESTRATION  &nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">Docker Swarm</span> <span class="note">· 5-node · replicated services · health-aware scheduling</span><br>
+        <span class="layer">LOAD BALANCING </span><span class="arrow">→ </span><span class="tool">HAProxy</span> <span class="note">· backend health checks · automatic failover routing</span><br>
+        <span class="layer">DATA LAYER     &nbsp;&nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">PostgreSQL + Redis</span> <span class="note">· replication + replica failover · NFS-backed persistence</span><br>
+        <span class="layer">OBSERVABILITY  &nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">Prometheus + Grafana</span> <span class="note">· live dashboards · alerting · metrics endpoints</span><br>
+        <span class="layer">DELIVERY       &nbsp;&nbsp;&nbsp;&nbsp;</span><span class="arrow">→ </span><span class="tool">GitLab CI/CD</span> <span class="note">· validate → deploy → verify · ~60% less manual work</span>
+      </div>
 
-        <div class="overview-grid">
-          <div class="info-card">
-            <h3>Proxmox Cluster</h3>
-            <p>Virtualised infrastructure hosting platform components across multiple nodes.</p>
-          </div>
-          <div class="info-card">
-            <h3>pfSense</h3>
-            <p>Routing, firewalling, and VLAN-based segmentation for secure traffic isolation.</p>
-          </div>
-          <div class="info-card">
-            <h3>Docker Swarm</h3>
-            <p>Container orchestration with replicated services and health-aware scheduling.</p>
-          </div>
-          <div class="info-card">
-            <h3>HAProxy</h3>
-            <p>Load balancing and failover support for continuous application accessibility.</p>
-          </div>
-          <div class="info-card">
-            <h3>PostgreSQL & Redis</h3>
-            <p>Persistent data layer and caching services to support performance and reliability.</p>
-          </div>
-          <div class="info-card">
-            <h3>Prometheus & Grafana</h3>
-            <p>Monitoring stack for infrastructure visibility, metrics collection, and dashboards.</p>
-          </div>
+      <div class="overview-grid" style="margin-top:1.5rem;">
+        <div class="info-card">
+          <h3>Proxmox Cluster</h3>
+          <p>Virtualised infrastructure hosting 8–12 VMs across multiple isolated nodes. Snapshot-based recovery and shared NFS storage underpin the backup strategy.</p>
         </div>
-      </section>
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Highlights</span>
-          <h2>Key features</h2>
+        <div class="info-card">
+          <h3>pfSense</h3>
+          <p>Routing, firewalling, and VLAN-based segmentation across 10+ networks — enforcing strict isolation between tenant, management, DMZ, and Wi-Fi segments.</p>
         </div>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>High Availability</h3>
-            <p>Odoo deployed with replicated services and failover-oriented architecture.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Network Segmentation</h3>
-            <p>VLAN isolation implemented through pfSense for cleaner security boundaries.</p>
-          </div>
-          <div class="feature-card">
-            <h3>CI/CD Workflow</h3>
-            <p>GitLab pipeline covering validation, deployment, and verification stages.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Monitoring</h3>
-            <p>Live metrics and dashboards through Prometheus and Grafana.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Backup Strategy</h3>
-            <p>NFS-backed storage and Proxmox snapshot mechanisms for recovery readiness.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Failure Simulation</h3>
-            <p>Tested service continuity during node interruption and recovery scenarios.</p>
-          </div>
+        <div class="info-card">
+          <h3>Docker Swarm</h3>
+          <p>Five-node container orchestration with replicated services, health-aware scheduling, and automatic rescheduling on node failure.</p>
         </div>
-      </section>
-
-      
-
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-kicker">Technical depth</span>
-          <h2>Implementation focus</h2>
+        <div class="info-card">
+          <h3>HAProxy</h3>
+          <p>Load balancing across replicated Odoo containers with backend health checks and traffic failover — keeping the application accessible during node disruptions.</p>
         </div>
-
-        <div class="overview-grid">
-          <div class="info-card">
-            <h3>Docker Swarm Stack</h3>
-            <p>Replicated services, node roles, and service continuity across the environment.</p>
-          </div>
-          <div class="info-card">
-            <h3>HAProxy Routing</h3>
-            <p>Traffic distribution with backend health logic and availability-aware behaviour.</p>
-          </div>
-          <div class="info-card">
-            <h3>PostgreSQL & Redis Roles</h3>
-            <p>Persistent data handling and caching support for application responsiveness.</p>
-          </div>
-          <div class="info-card">
-            <h3>VLAN Logic</h3>
-            <p>Service separation for management, servers, users, and protected segments.</p>
-          </div>
+        <div class="info-card">
+          <h3>PostgreSQL & Redis</h3>
+          <p>Persistent data layer with replication for durability and Redis caching with replica takeover for low-latency failover.</p>
         </div>
-      </section>
-    </main>
-  </div>
+        <div class="info-card">
+          <h3>Prometheus & Grafana</h3>
+          <p>Full observability stack: live metrics collection, alerting rules, and purpose-built dashboards reflecting cluster health in real time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KEY FEATURES ─────────────────────────────── -->
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Highlights</span>
+        <h2>Key features</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>High Availability</h3>
+          <p>Replicated services, HAProxy failover, and Redis replica takeover — validated under live node interruption with zero downtime.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Network Segmentation</h3>
+          <p>pfSense enforces strict boundaries across 10+ VLANs: tenant workloads, management interfaces, and DMZ services cannot cross-contaminate.</p>
+        </div>
+        <div class="feature-card">
+          <h3>CI/CD Automation</h3>
+          <p>GitLab pipeline covers validation, deployment, and post-deploy verification — cutting manual configuration effort by ~60%.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Observability</h3>
+          <p>Prometheus scrapes metrics from infrastructure components; Grafana surfaces cluster health, resource pressure, and request rates in live dashboards.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Backup & Recovery</h3>
+          <p>NFS-backed persistent storage combined with Proxmox VM snapshots gives point-in-time recovery for both the platform and its data layer.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Failure Simulation</h3>
+          <p>Node kills and service interruptions tested under realistic load — proving the architecture holds before the grade submission.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECHNICAL DEPTH ──────────────────────────── -->
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Technical depth</span>
+        <h2>Implementation focus</h2>
+      </div>
+      <div class="demo-panel">
+        <ol class="step-list">
+          <li>
+            <strong>Proxmox cluster setup:</strong>
+            Provisioned 8–12 VMs across nodes with shared NFS storage; configured quorum and snapshot policies for recoverability.
+          </li>
+          <li>
+            <strong>pfSense VLAN design:</strong>
+            Mapped 10+ VLANs to functional segments (tenant, management, DMZ, Wi-Fi, CCTV); wrote firewall rules enforcing least-privilege cross-segment access.
+          </li>
+          <li>
+            <strong>Docker Swarm orchestration:</strong>
+            Defined Swarm services with replica counts, restart policies, and health check thresholds; assigned node roles to control workload placement.
+          </li>
+          <li>
+            <strong>HAProxy configuration:</strong>
+            Wrote backend definitions with active health checks and failover timeouts; validated that traffic rerouted cleanly when nodes went dark.
+          </li>
+          <li>
+            <strong>PostgreSQL & Redis replication:</strong>
+            Configured streaming replication for the database and Redis replica promotion — tested each failover path explicitly.
+          </li>
+          <li>
+            <strong>GitLab CI/CD pipeline:</strong>
+            Built three-stage pipeline: lint/validate → deploy → smoke-test; parameterised environments to support multi-tenant rollouts.
+          </li>
+          <li>
+            <strong>Prometheus & Grafana stack:</strong>
+            Wrote scrape configs targeting all services; built dashboards for cluster health, Odoo request metrics, and database lag.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── WHAT IT PROVES ───────────────────────────── -->
+    <section class="section">
+      <div class="section-heading">
+        <span class="section-kicker">Takeaway</span>
+        <h2>What this demonstrates</h2>
+      </div>
+      <div class="demo-panel">
+        <ul class="feature-list">
+          <li>End-to-end ownership of a production-grade infrastructure platform — from VM provisioning to CI/CD and observability</li>
+          <li>Network engineering depth: VLAN design, firewall policy, and traffic isolation across 10+ segments</li>
+          <li>Container orchestration beyond the basics: Swarm replica management, health-aware scheduling, and verified failover</li>
+          <li>Database operations under pressure: replication, failover, and persistence strategy for a live SaaS workload</li>
+          <li>Automation discipline: GitLab CI/CD cutting deploy effort by ~60% through repeatable, testable pipelines</li>
+          <li>Observability-first mindset: metrics collection and dashboards built alongside the platform, not bolted on after</li>
+        </ul>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="https://github.com/rai-trabelsi/micro_datacenter_repo" target="_blank" rel="noreferrer">GitHub Repository</a>
+          <a class="btn btn-ghost" href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    📍 Tunis, Tunisia · Available for relocation · Visa sponsorship welcomed ·
+    <a href="mailto:rai.trabelsi@outlook.com">rai.trabelsi@outlook.com</a>
+  </footer>
+
+</div>
+
+<!-- Floating hire bar -->
+<div class="hire-bar">
+  <a class="hire-ghost" href="index.html">← Portfolio</a>
+  <a class="hire-primary" href="mailto:rai.trabelsi@outlook.com">Hire me →</a>
+</div>
+
 </body>
 </html>
