@@ -100,6 +100,13 @@
       font-family: Inter, sans-serif;
     }
     .visa-note strong { color: #0f172a; }
+
+    /* ── About section ─────────────────────────────────────── */
+    .about-text {
+      max-width: 68ch;
+      margin: 0 0 1.1rem;
+    }
+    .about-text:last-child { margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -108,6 +115,7 @@
       <nav class="topbar">
         <div class="brand">Rai Trabelsi</div>
         <div class="nav-links">
+          <a href="#about">About</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
           <a href="https://github.com/rai-trabelsi" target="_blank" rel="noreferrer">GitHub</a>
@@ -171,6 +179,34 @@
     </header>
 
     <main>
+      <section id="about" class="section">
+        <div class="section-heading">
+          <span class="section-kicker">About</span>
+          <h2>I build infrastructure other engineers get to build on top of.</h2>
+        </div>
+
+        <p class="about-text hero-text">
+          Junior Platform Engineer working in Kubernetes, Terraform, and GitOps. I turn manual,
+          error-prone processes into systems that just work, and then I try to break them on
+          purpose to see if they actually hold up.
+        </p>
+        <p class="about-text hero-text">
+          My final year project was a multi-tenant SaaS platform with automated CI/CD and
+          built-in high availability, validated through live failure simulations, zero downtime.
+          More recently I built a diagnostic tool that uses a local LLM to root-cause Kubernetes
+          failures, tested across 25+ scenarios, where the real work was teaching it to show its
+          reasoning instead of just handing back a verdict.
+        </p>
+        <p class="about-text hero-text">
+          Before infrastructure automation, I did the manual version: VMware administration,
+          firewall configuration, Linux deployments by hand. That's still how I think about most
+          of what I now automate.
+        </p>
+        <p class="about-text hero-text">
+          Based in Tunisia, open to remote work worldwide.
+        </p>
+      </section>
+
       <section id="projects" class="section">
         <div class="section-heading">
           <span class="section-kicker">Featured work</span>
